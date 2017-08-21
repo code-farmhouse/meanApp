@@ -12,4 +12,21 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.post('/', function(req, res) {
+	var collection = db.get('songs');
+	collection.insert({
+		title: req.body.title,
+		year: req.body.year,
+		month: req.body.month,
+		day: req.body.day,
+		venue: req.body.venue,
+		description: req.body.description,
+		filepath: req.body.filepath
+	}, function(err, song) {
+		if (err) throw err;
+
+		res.json(song);
+	});
+});
+
 module.exports = router;

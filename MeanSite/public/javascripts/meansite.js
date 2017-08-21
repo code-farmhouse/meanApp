@@ -6,6 +6,9 @@ app.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'partials/home.html',
 			controller: 'HomeCtrl'
 		})
+		.when('/add-song', {
+			templateUrl: 'partials/song-form.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
