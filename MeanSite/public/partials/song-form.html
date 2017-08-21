@@ -3,31 +3,31 @@
 <form>
 	<div class="form-group">
 		<label>Title</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.title"></input>
 	</div>
 	<div class="form-group">
 		<label>Year</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.year"></input>
 	</div>
 	<div class="form-group">
 		<label>Month</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.month"></input>
 	</div>
 	<div class="form-group">
 		<label>Day</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.day"></input>
 	</div>
 	<div class="form-group">
 		<label>Venue</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.venue"></input>
 	</div>
 	<div class="form-group">
 		<label>Description</label>
-		<textarea class="form-control"></textarea>
+		<textarea class="form-control" ng-model="song.description"></textarea>
 	</div>
 	<div class="form-group">
 		<label>Filepath</label>
-		<input class="form-control"></input>
+		<input class="form-control" ng-model="song.filepath"></input>
 	</div>	
-	<input type="button" class="btn btn-primary" value="Save"></input>
+	<input type="button" class="btn btn-primary" value="Save" ng-click="save()"></input>
 </form>

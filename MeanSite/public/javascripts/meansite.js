@@ -7,7 +7,8 @@ app.config(['$routeProvider', function($routeProvider){
 			controller: 'HomeCtrl'
 		})
 		.when('/add-song', {
-			templateUrl: 'partials/song-form.html'
+			templateUrl: 'partials/song-form.html',
+			controller: 'AddSongCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -18,3 +19,13 @@ app.controller('HomeCtrl', ['$scope', '$resource', function($scope, $resource){
 	var Songs = $resource('/api/songs');
 	Songs.query(function(songs){$scope.songs = songs;});
 }]);
+
+app.controller('AddSongCtrl', ['$scope', '$resource', '$location',
+	function($scope, $resource, $location){
+		$scope.save = function(){
+			var Songs = $resource('/api/songs');
+			Songs.save($scope.song, function(){
+				$location.path('/');
+			});
+		};
+	}]);
