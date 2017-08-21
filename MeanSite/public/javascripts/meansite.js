@@ -9,12 +9,9 @@ app.config(['$routeProvider', function($routeProvider){
 		.otherwise({
 			redirectTo: '/'
 		});
-	}]);
+}]);
 
-app.controller('HomeCtrl', ['$scope', '$resource',
-	fuction($scope, $resource){
-		var Songs = $resource('/api/songs');
-		Songs.query(function(songs){
-			$scope.songs = songs;
-		});
-	}]);
+app.controller('HomeCtrl', ['$scope', '$resource', function($scope, $resource){
+	var Songs = $resource('/api/songs');
+	Songs.query(function(songs){$scope.songs = songs;});
+}]);
