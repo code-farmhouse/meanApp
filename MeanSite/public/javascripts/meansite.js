@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'partials/song-form.html',
 			controller: 'AddSongCtrl'
 		})
+		.when('/song/:id', {
+			templateUrl: 'partials/song-form.html',
+			controller: 'EditSongCtrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -28,4 +32,21 @@ app.controller('AddSongCtrl', ['$scope', '$resource', '$location',
 				$location.path('/');
 			});
 		};
+	}]);
+
+app.controller('EditSongCtrl', ['$scope', '$resource', '$location', '$routeParams',
+	function($scope, $resource, $location, $routeParams){
+		var Songs = $resource('/api/songs/:id', { id: '@_id' }, {
+			update: { method: 'PUT' }
+		});
+
+		Songs.get({ id: $routeParams.id }, function(song){
+			$scope.song = song;
+		});
+
+		$scope.save = function(){
+			Songs.update($scope.song, function(){
+				$location.path('/');
+			});
+		}
 	}]);

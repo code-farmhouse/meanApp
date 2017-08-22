@@ -5,5 +5,9 @@
 </p>
 
 <ul>
-	<li ng-repeat='song in songs'>{{song.title}}</li>
+	<li ng-repeat='song in songs'>
+		<a href="/#/song/{{song._id}}">
+			{{song.title}}
+		</a>
+	</li>
 </ul>
